@@ -21,3 +21,4 @@ class WebPicker implements CrossPicker {
     });
   }
 }
+CrossPicker getPicker() => WebPicker();

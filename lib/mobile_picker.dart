@@ -10,3 +10,5 @@ class MobilePicker implements CrossPicker{
     return Image.file(image);
   }
 }
+
+CrossPicker getPicker() => MobilePicker();
