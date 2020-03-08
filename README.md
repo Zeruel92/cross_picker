@@ -1,14 +1,25 @@
 # cross_picker
 
-A new Flutter project.
+Crossplatform Picker that combine [Image Picker][1] for mobile and [Universal Html][2] for the web
 
-## Getting Started
+## Installing
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+- Add into pubspec.yaml 
+```yaml
+cross_picker:
+    git:
+      url: https://github.com/pspgt/cross_picker.git
+```
+- run `flutter pub get`
+- Now import with `import 'package:cross_picker/cross_picker.dart';`
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+# Example 
+
+```dart
+CrossPicker picker = CrossPicker();
+Uint8List imageBytes = await picker.getImage();
+```
+
+[//]: #Links
+[1]: https://pub.dev/packages/image_picker
+[2]: https://pub.dev/packages/universal_html
