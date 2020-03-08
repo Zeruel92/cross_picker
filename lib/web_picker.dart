@@ -1,28 +1,28 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cross_picker/cross_picker.dart';
 import 'package:universal_html/prefer_universal/html.dart' as html;
 
 class WebPicker implements CrossPicker {
   @override
-  Future<File> getImage() async {
-    File selectedFile;
+  Future<Uint8List> getImage() async {
+    print('aeaaa');
     html.InputElement uploadInput = html.FileUploadInputElement();
     uploadInput.multiple = true;
     uploadInput.draggable = true;
     uploadInput.click();
-    uploadInput.onChange.listen((e) {
-      final reader = new html.FileReader();
-      reader.onLoadEnd.listen((e) {
-        final result = reader.result;
-        final bytesData =
-            Base64Decoder().convert(result.toString().split(",").last);
-        selectedFile = File("uploaded-${DateTime.now()}");
-        selectedFile.writeAsBytesSync(bytesData);
+    return uploadInput.onChange.first.then((e) {
+      final reader = html.FileReader();
+      reader.readAsDataUrl(uploadInput.files[0]);
+      return reader.onLoad.first.then((res) {
+        final encoded = reader.result as String;
+        final stripped =
+            encoded.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
+        return Base64Decoder().convert(stripped);
       });
     });
-    return selectedFile;
   }
 }
+
 CrossPicker getPicker() => WebPicker();
