@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.6.3+4
-  image_picker_web: ^0.1.6
+  universal_html: ^1.1.17
 
 dev_dependencies:
   flutter_test:
