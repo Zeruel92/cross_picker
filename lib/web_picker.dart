@@ -13,8 +13,6 @@ class WebPicker implements CrossPicker {
     uploadInput.draggable = true;
     uploadInput.click();
     uploadInput.onChange.listen((e) {
-      final files = uploadInput.files;
-      final file = files[0];
       final reader = new html.FileReader();
       reader.onLoadEnd.listen((e) {
         final result = reader.result;
