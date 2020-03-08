@@ -1,12 +1,13 @@
 library cross_picker;
 
+import 'dart:io';
+
 import 'cross_picker_stub.dart'
     if (dart.library.io) 'mobile_picker.dart'
     if (dart.library.html) 'web_picker.dart';
-import 'package:flutter/material.dart';
 
 abstract class CrossPicker {
-  Future<Image> getImage();
+  Future<File> getImage();
 
   factory CrossPicker() => getPicker();
 }

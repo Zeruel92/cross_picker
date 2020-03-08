@@ -1,9 +1,7 @@
-import 'dart:html';
-
+import 'dart:convert';
+import 'dart:io';
 import 'package:cross_picker/cross_picker.dart';
-import 'package:flutter/src/widgets/image.dart';
-import 'package:image_picker_web/image_picker_web.dart';
-//import 'package:universal_html/prefer_universal/html.dart' as html;
+import 'package:universal_html/prefer_universal/html.dart' as html;
 
 class WebPicker implements CrossPicker {
   @override
