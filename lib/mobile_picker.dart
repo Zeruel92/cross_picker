@@ -7,7 +7,7 @@ class MobilePicker implements CrossPicker {
   @override
   Future<Uint8List> getImage() async {
     final image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    return image.readAsBytesSync();
+    return image?.readAsBytesSync() ?? null;
   }
 }
 
